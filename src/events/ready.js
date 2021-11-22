@@ -5,7 +5,5 @@ module.exports = {
 	once: true,
 	async execute(client) {
 		client.user.setPresence({ activities: [{ name: 'ticket demands.', type: 'LISTENING' }], status: 'dnd' });
-
-		console.log('Ready, listening to ticket demands!');
 	}
 }

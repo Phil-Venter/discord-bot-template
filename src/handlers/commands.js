@@ -1,11 +1,13 @@
 const { Collection } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { clientId, guildId, token } = require('../config.json');
+
 const fs = require('fs');
 
 module.exports = (client) => {
-	client.handleCommands = async (commandFiles) => {
+	client.handleCommands = async (commandFiles, config) => {
+		const { clientId, guildId, token } = config;
+
 		client.commands = new Collection();
 		const commandArray = [];
 

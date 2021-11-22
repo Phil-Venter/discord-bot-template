@@ -5,10 +5,8 @@ module.exports = {
 
 		if (interaction.isCommand()) {
 			_interaction = client.commands.get(interaction.commandName);
-		} else if (interaction.isButton()) {
-			interaction = client.buttons.get(interaction.customId);
-		} else if (interaction.isSelectMenu()) {
-			interaction = client.selects.get(interaction.customId);
+		} else if (interaction.isButton() || interaction.isSelectMenu()) {
+			_interaction = client.selects.get(interaction.customId);
 		}
 
 		if (!_interaction) return;

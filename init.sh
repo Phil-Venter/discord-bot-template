@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cp src/config.bak src/config.json
+cp config.bak config.json
 
 npm install
