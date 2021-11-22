@@ -11,6 +11,17 @@ Go check out the below resources:
 - [Discord JS Docs](https://discord.js.org/#/docs/main/stable/general/welcome)
 - [Discord JS Guide](https://discordjs.guide/)
 
+## Running/Commands
+
+- update `package.json` with the name of your project, curretly it is `template`
+- update `package.json` to match the amount of cores
+
+- `npm run test` => normal run, meant for testing purposes
+- `npm run deploy` => run bot using pm2
+- `npm run reload` => reload pm2
+- `npm run kill` => stop running pm2
+- `npm run clean` => stop and remove pm2
+
 ## Contributing
 
 Send a pull request and see what sticks, no promises...

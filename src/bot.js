@@ -26,7 +26,6 @@ const selectFiles = getFiles('./src/selects');
 
 (async () => {
 	for (file of handlers) {
-		console.log(file)
 		require(file)(client);
 	}
 
