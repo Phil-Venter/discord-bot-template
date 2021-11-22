@@ -1,27 +1,38 @@
-const { Client, Intents, Collection } = require('discord.js');
+const { Client, Intents } = require('discord.js');
 const { token } = require('./config.json');
 const fs = require('fs');
+const path = require("path");
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-client.buttons = new Collection();
-client.commands = new Collection();
-client.selects = new Collection();
+function getFiles(dir) {
+	return fs.readdirSync(dir).flatMap(file => {
+		let fullPath = path.join(dir, file);
+		if (fs.lstatSync(fullPath).isDirectory()) {
+			return getFiles(fullPath);
+		} else {
+			if(fullPath.endsWith('.js')) {
+				return path.resolve(fullPath);
+			}
+		}
+	}).filter(_ => _);
+}
 
-const functions = fs.readdirSync('./src/functions').filter(file => file.endsWith('.js'));
-const eventFiles = fs.readdirSync('./src/events').filter(file => file.endsWith('.js'));
-const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
-const buttonFiles = fs.readdirSync('./src/buttons').filter(file => file.endsWith('.js'));
-const selectFiles = fs.readdirSync('./src/selects').filter(file => file.endsWith('.js'));
+const handlers = getFiles('./src/handlers');
+const eventFiles = getFiles('./src/events');
+const buttonFiles = getFiles('./src/buttons');
+const commandFiles = getFiles('./src/commands');
+const selectFiles = getFiles('./src/selects');
 
 (async () => {
-	for (file of functions) {
-		require(`./functions/${file}`)(client);
+	for (file of handlers) {
+		console.log(file)
+		require(file)(client);
 	}
 
 	client.handleEvents(eventFiles);
-	client.handleCommands(commandFiles);
 	client.handleButtons(buttonFiles);
+	client.handleCommands(commandFiles);
 	client.handleSelects(selectFiles);
 
 	client.login(token);
