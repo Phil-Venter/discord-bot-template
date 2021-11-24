@@ -3,6 +3,8 @@ const config = require('../config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
+client.config = config;
+
 const files = require('./files.js');
 
 const handlerFiles = files('./src/handlers');
@@ -17,11 +19,11 @@ const selectFiles = files('./src/select');
 		require(file)(client);
 	}
 
-	client.handleDatabase(databaseFiles, config);
-	client.handleEvents(eventFiles, config);
-	client.handleButtons(buttonFiles, config);
-	client.handleCommands(commandFiles, config);
-	client.handleSelects(selectFiles, config);
+	client.handleDatabase(databaseFiles);
+	client.handleEvents(eventFiles);
+	client.handleButtons(buttonFiles);
+	client.handleCommands(commandFiles);
+	client.handleSelects(selectFiles);
 
 	client.login(config.token);
 })();

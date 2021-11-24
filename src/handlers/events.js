@@ -1,5 +1,5 @@
 module.exports = (client) => {
-	client.handleEvents = async (eventFiles, config) => {
+	client.handleEvents = async (eventFiles) => {
 		for (const file of eventFiles) {
 			const event = require(file);
 			if (event.once) {
