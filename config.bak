@@ -8,5 +8,9 @@
 	"database": "<db name>",
 	"username": "<db username>",
 	"password": "<db password>",
-	"storage": "<sqlite file>"
+	"storage": "<sqlite file>",
+
+	"type": "PLAYING",
+	"name": "template",
+	"status": "online"
 }

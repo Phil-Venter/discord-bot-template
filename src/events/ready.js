@@ -4,6 +4,7 @@ module.exports = {
 	name: 'ready',
 	once: true,
 	async execute(client) {
-		client.user.setPresence({ activities: [{ name: 'template' }], status: 'dnd' });
+		const { type, name, status } = client.config;
+		client.user.setPresence({ activities: [{ type, name }], status });
 	}
 }
