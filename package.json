@@ -4,7 +4,7 @@
   "description": "Simple discord bot template",
   "main": "src/bot.js",
   "scripts": {
-    "test": "node src/bot.js",
+    "test": "nodemon src/bot.js",
     "deploy": "pm2 start src/bot.js -i 4 --name template",
     "reload": "pm2 reload template",
     "kill": "pm2 stop template",
