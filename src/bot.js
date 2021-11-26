@@ -1,9 +1,7 @@
 const { Client, Intents } = require('discord.js');
-const config = require('../config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-
-client.config = config;
+client.config = require('../config.json');
 
 const files = require('./files.js');
 

@@ -6,7 +6,7 @@ module.exports = (client) => {
 
 		client.sequelize = new Sequelize(database, username, password, { host, dialect, storage });
 
-		client.database = new {};
+		client.database = {};
 
 		for (const file of databaseFiles) {
 			const database = require(file);
